@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import React from "react";
+
+function Input() {
+
+  const [arr, setArr] = React.useState(['test', 'hello']);
+
+
+  function handle() {
+    const item = document.getElementById('inputContent').value
+    setArr(prevState => [...prevState, item])
+  }
+
+  const mapped = arr.map(item => {
+    return (
+      <p >{item}</p>
+    )
+  })
+
+  return (
+    <div>
+      <input id='inputContent' type='text' />
+      <button onClick={handle}>Submit</button>
+      <p>{mapped}</p>
+    </div>
+  )
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input />
     </div>
   );
 }
